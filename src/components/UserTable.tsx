@@ -1,12 +1,7 @@
-import { User } from "../store/slices/usersSlice";
+import { type UsersState } from "../store/slices/usersSlice";
+import HighlightedText from "./HighlightedText";
 
-type UserTableProps = {
-  users: User[];
-  loading: boolean;
-  error: string | null;
-};
-
-function UserTable({ users, loading, error }: UserTableProps) {
+function UserTable({ users, loading, error, filter }: UsersState) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -23,10 +18,18 @@ function UserTable({ users, loading, error }: UserTableProps) {
       <tbody className="text-lg bg-slate-700 divide-y divide-slate-400 text-slate-300">
         {users.map((user) => (
           <tr key={user.id} className="divide-x divide-slate-400">
-            <td className="py-2 px-4">{user.name}</td>
-            <td className="py-2 px-4">{user.username}</td>
-            <td className="py-2 px-4">{user.email}</td>
-            <td className="py-2 px-4">{user.phone}</td>
+            <td className="py-2 px-4">
+              <HighlightedText text={user.name} highlight={filter} />
+            </td>
+            <td className="py-2 px-4">
+              <HighlightedText text={user.username} highlight={filter} />
+            </td>
+            <td className="py-2 px-4">
+              <HighlightedText text={user.email} highlight={filter} />
+            </td>
+            <td className="py-2 px-4">
+              <HighlightedText text={user.phone} highlight={filter} />
+            </td>
           </tr>
         ))}
       </tbody>
