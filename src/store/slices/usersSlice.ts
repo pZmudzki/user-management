@@ -9,7 +9,7 @@ export interface User {
   phone: string;
 }
 
-interface UsersState {
+export interface UsersState {
   users: User[];
   loading: boolean;
   error: string | null;
