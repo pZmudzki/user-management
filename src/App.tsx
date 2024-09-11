@@ -30,15 +30,26 @@ function App() {
   );
 
   return (
-    <div>
-      <div>
-        <h1>User management</h1>
+    <div className="min-h-screen bg-slate-900 py-20 px-4">
+      <div className="fixed top-4 left-1/2 -translate-x-1/2">
         <input
           type="text"
-          placeholder="Search by name, username, email, or phone"
+          className="rounded-full py-3 pl-5 pr-12 bg-slate-500 text-slate-300 border border-slate-300 focus:outline focus:outline-slate-200"
+          placeholder="Search"
           value={filter}
           onChange={handleFilterChange}
         />
+        <svg
+          viewBox="0 0 24 24"
+          className="stroke-slate-300 fill-none absolute top-1/2 -translate-y-1/2 right-3 h-7 w-7"
+        >
+          <path
+            d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
       <UserTable users={filteredUsers} loading={loading} error={error} />
     </div>
